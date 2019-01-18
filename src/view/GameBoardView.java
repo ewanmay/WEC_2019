@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,134 +16,139 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("serial")
 public class GameBoardView extends JFrame{
-	
-    /**
-     * the buttons of the game board
-     */
-    private JButton [][] buttons;
-    
-    /**
-     * sideLength of gameBoard. Number of Buttons = sideLength^2
-     */
-    private int sideLength;
-    
-    /**
-     * reset button
-     */
-    private JButton resetButton;
 
+	/**
+	 * the buttons of the game board
+	 */
+	private JButton [][] buttons;
 
-    /**
-     * Contains the board (button grid)
-     */
-    private JPanel gamePanel = new JPanel(); // contains the board
-    /**
-     * panel that contains reset button
-     */
-    private JPanel resetButtonPanel = new JPanel(); // reset button, text info
- 
-    
-    
-    public GameBoardView(int sideLength) {
-    	
-	    	buttons = new JButton[sideLength][sideLength];
-	    this.sideLength = sideLength;
-	    	
-	    	setTitle("Lion Inc.");
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-	    
-	    makeResetButtonPanel();
-	    makeGamePanel();
-	
-	    pack();
-	    setLocationRelativeTo(null); // show in center of screen
-	    setVisible(true);
-	    	
-    }
-    
-    /**
-     * make the top panel containing the reset button 
-     */
-    private void makeResetButtonPanel() {
-    		makeResetButton();
-    		resetButtonPanel.add(resetButton);
-		add(resetButtonPanel);
-	}
-    
-    /**
-     * init the reset button
-     */
-    private void makeResetButton(){
-		resetButton = new JButton("Reset");
-        resetButton.setFocusPainted(false); // don't highlight as selected
-    }
+	/**
+	 * sideLength of gameBoard. Number of Buttons = sideLength^2
+	 */
+	private int sideLength;
+
+	/**
+	 * reset button
+	 */
+	private JButton resetButton;
 
 
 	/**
-     * Creates the game board panel
-     */
-    public void makeGamePanel(){
-        gamePanel.setLayout(new GridLayout(sideLength,3));
-        gamePanel.setMinimumSize(new Dimension(700,700));
-        initializeButtons();
-        gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
-        add(gamePanel);
-    }
-    
-    /**
-     * init all the game buttons and add them to the gamePanel
-     */
-    private void initializeButtons(){
-        for(int i = 0; i < sideLength; i++)
-        {
-            for(int j = 0 ; j < sideLength ; j++){
-                buttons[i][j] = new JButton();
-                buttons[i][j].setText("");
-                buttons[i][j].setName(""+ i + ", "+ j);
-                buttons[i][j].setPreferredSize(new Dimension(40, 40));
-                buttons[i][j].setFocusPainted(false); // don't highlight selected buttons
-                gamePanel.add(buttons[i][j]);
-            }
-        }      
-    }
-    
-    
-    /**
-     * sets the button text for the JButton located at [row][col]
-     * @param row the row
-     * @param col the col
-     * @param text the button text
-     */
-    public void setButtonText(int row, int col, String text) {
-    		buttons[row][col].setText(text);
-    }
-    
-    /**
-     * adds action listener for the specified JButton located at [row][col]
-     * @param row the row
-     * @param col the Column
-     * @param text the button text to display
-     * @param e the ActionListener
-     */
-    public void setGridButtonListener(int row, int col, ActionListener e) {
+	 * Contains the board (button grid)
+	 */
+	private JPanel gamePanel = new JPanel(); // contains the board
+	/**
+	 * panel that contains reset button
+	 */
+	private JPanel resetButtonPanel = new JPanel(); // reset button, text info
+
+
+
+	public GameBoardView(int sideLength) {
+
+		buttons = new JButton[sideLength][sideLength];
+		this.sideLength = sideLength;
+
+		setTitle("Lion Inc.");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
+		makeResetButtonPanel();
+		makeGamePanel();
+//		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
+
+		pack();
+		setLocationRelativeTo(null); // show in center of screen
+		setVisible(true);
+
+	}
+
+	/**
+	 * make the top panel containing the reset button 
+	 */
+	private void makeResetButtonPanel() {
+		makeResetButton();
+		resetButtonPanel.add(resetButton);
+		resetButtonPanel.setMaximumSize(resetButton.getPreferredSize()); // so this panel doesn't grow
+		add(resetButtonPanel);
+	}
+
+	/**
+	 * init the reset button
+	 */
+	private void makeResetButton(){
+		resetButton = new JButton("Reset");
+		resetButton.setFocusPainted(false); // don't highlight as selected
+	}
+
+
+	/**
+	 * Creates the game board panel
+	 */
+	public void makeGamePanel(){
+		gamePanel.setLayout(new GridLayout(sideLength,sideLength));
+		//TODO best way to set size such that it is resizable? shows well on Mac/Windows?
+		gamePanel.setMinimumSize(new Dimension(700,700));
+		initializeButtons();
+		gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
+		add(gamePanel);
+	}
+
+	/**
+	 * init all the game buttons and add them to the gamePanel
+	 */
+	private void initializeButtons(){
+		for(int i = 0; i < sideLength; i++)
+		{
+			for(int j = 0 ; j < sideLength ; j++){
+				JButton b = new JButton();
+				b.setText("");
+				b.setName(""+ i + ", "+ j); //for IDing upon click
+				b.setPreferredSize(new Dimension(40,40));
+
+				b.setFocusPainted(false); // don't highlight selected buttons
+				buttons[i][j] = b;
+				gamePanel.add(b);
+			}
+		}      
+	}
+
+
+	/**
+	 * sets the button text for the JButton located at [row][col]
+	 * @param row the row
+	 * @param col the col
+	 * @param text the button text
+	 */
+	public void setButtonText(int row, int col, String text) {
+		buttons[row][col].setText(text);
+	}
+
+	/**
+	 * adds action listener for the specified JButton located at [row][col]
+	 * @param row the row
+	 * @param col the Column
+	 * @param text the button text to display
+	 * @param e the ActionListener
+	 */
+	public void setGridButtonListener(int row, int col, ActionListener e) {
 		buttons[row][col].addActionListener(e);
-    }
-    
-    /**
-     * adds action listener for the reset button
-     * @param e the ActionListener
-     */
-    public void setResetButtonListener(ActionListener e) {
+	}
+
+	/**
+	 * adds action listener for the reset button
+	 * @param e the ActionListener
+	 */
+	public void setResetButtonListener(ActionListener e) {
 		resetButton.addActionListener(e);
-    }
-    
-    /**
-     * @return the 2D array of JButtons
-     */
-    public JButton[][] getGridButtons() {
-    		return buttons;
-    }
-    
-    
+	}
+
+	/**
+	 * @return the 2D array of JButtons
+	 */
+	public JButton[][] getGridButtons() {
+		return buttons;
+	}
+
+
 }
