@@ -60,7 +60,9 @@ public class GameBoardController {
             }
             //TODO process button clicks
             //set text
+            buttonClicked.setText("T"); // TODO test text
             //disable button
+            buttonClicked.setEnabled(false);
         }
     }
 	

@@ -105,10 +105,10 @@ public class GameBoard {
 	 * Main method to test class.
 	 * @param args command line arguments.
 	 */
-	public static void main(String [] args) {
-		GameBoard test = new GameBoard(10);
-		test.printBoard();
-	}
+//	public static void main(String [] args) {
+//		GameBoard test = new GameBoard(10);
+//		test.printBoard();
+//	}
 
 	
 	

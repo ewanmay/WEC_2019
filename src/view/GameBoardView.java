@@ -62,10 +62,15 @@ public class GameBoardView extends JFrame{
      * make the top panel containing the reset button 
      */
     private void makeResetButtonPanel() {
-    		resetButton = new JButton("Reset");
+    		makeResetButton();
     		resetButtonPanel.add(resetButton);
 		add(resetButtonPanel);
 	}
+    
+    private void makeResetButton(){
+		resetButton = new JButton("Reset");
+        resetButton.setFocusPainted(false); // don't highlight as selected
+    }
 
 
 	/**
@@ -89,6 +94,7 @@ public class GameBoardView extends JFrame{
                 buttons[i][j] = new JButton();
                 buttons[i][j].setText("");
                 buttons[i][j].setPreferredSize(new Dimension(40, 40));
+                buttons[i][j].setFocusPainted(false); // don't highlight selected buttons
                 gamePanel.add(buttons[i][j]);
             }
         }      
