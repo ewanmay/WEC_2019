@@ -7,6 +7,7 @@ public class Demo {
 	public static void main(String[] args) {
 		
 		StartScreen gameStarter = new StartScreen();
+
 		int sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {
 			System.out.println("Error selecting board size.");
@@ -17,6 +18,7 @@ public class Demo {
 			@SuppressWarnings("unused")
 			GameBoardController controller = new GameBoardController(view, model, sideLength);
 		}
+
 
 	}
 
