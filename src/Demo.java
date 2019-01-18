@@ -1,4 +1,5 @@
 import controller.GameBoardController;
+import controller.SelectSimulator;
 import controller.StartScreen;
 import model.GameBoard;
 import view.GameBoardView;
@@ -7,6 +8,9 @@ public class Demo {
 
 	public static void main(String[] args) {
 		
+		SelectSimulator selectSimulator = new SelectSimulator();
+		boolean simulation = selectSimulator.selectSimulateMode();
+
 		StartScreen gameStarter = new StartScreen();
 		int sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {
