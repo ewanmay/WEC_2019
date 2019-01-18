@@ -12,7 +12,7 @@ public class Demo {
 		GameBoard model = new GameBoard(boardLength);
 		GameBoardView view = new GameBoardView(boardLength);
 		
-		GameBoardController controller = new GameBoardController(view, model);
+		GameBoardController controller = new GameBoardController(view, model, boardLength);
 		
 		
 

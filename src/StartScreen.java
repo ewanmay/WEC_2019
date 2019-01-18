@@ -3,11 +3,24 @@
 
 import javax.swing.JOptionPane;
 
+/**
+ * StartScreen class that displays the initial screen that allows you to decide what board size you want
+ *
+ */
+
 public class StartScreen {
+	
+	/**
+	 * Default constructor for class StartScreen
+	 */
 	
 	public StartScreen(){
 	}
 	
+	/**
+	 * function that allows users to select the size of the game board they would like to play
+	 * @return the size of the board selected represented as an Integer type
+	 */
 	public int selectBoardSize() {
 		String[] inputButtons = {"Small", "Medium", "Large"};
 		
