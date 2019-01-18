@@ -8,19 +8,21 @@ import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.util.Random;
 
+import javax.swing.JButton;
+
 import view.GameBoardView;
 
-public class Simuator {
+public class Simulator {
 
 	Robot robot;
 	
 	GameBoardView gui;
 	
-	Component [][] buttonComponents;
+	JButton [][] buttonComponents;
 	
-	Component resetButton;
+	JButton resetButton;
 	
-	public Simuator(GameBoardView theGui) {
+	public Simulator(GameBoardView theGui) {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {
@@ -32,26 +34,22 @@ public class Simuator {
 		}
 		
 		Component components1 [] = gui.getResetButtonPanel().getComponents();
-		//System.out.println(components1.length);
-		resetButton = components1[0];
+		resetButton = (JButton)components1[0];
 		
+		repopulateButtons();
 		
+	}
+	
+	private void repopulateButtons() {
 		Component components2 [] = gui.getGamePanel().getComponents();
-		//System.out.println(components2.length);	
 		
-		buttonComponents = new Component[(int) Math.sqrt(components2.length)][(int) Math.sqrt(components2.length)];
+		buttonComponents = new JButton[(int) Math.sqrt(components2.length)][(int) Math.sqrt(components2.length)];
 		
 		for(int j=0, k=0; j < buttonComponents.length; j++) {
 			for(int i=0; i < buttonComponents[j].length; i++, k++) {
-				buttonComponents[i][j] = components2[k];
-				//Point location =buttonComponents[i][j].getLocationOnScreen();
-				//System.out.println(location);
-				//mouseMoveAndClick(buttonComponents[i][j]);
+				buttonComponents[i][j] = (JButton)components2[k];
 			}
 		}
-		
-		
-		
 	}
 	
 	/**
@@ -76,12 +74,17 @@ public class Simuator {
 		r = new Random();
 		int yPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
 		mouseMoveAndClick(buttonComponents[xPos][yPos]);
-		
+		repopulateButtons();
+	}
+	
+	public void pressButton(int xPos, int yPos) {
+		mouseMoveAndClick(buttonComponents[xPos][yPos]);
+		repopulateButtons();
 	}
 	
 	
 	public static void main(String[] args) {
-		Simuator test = new Simuator(new GameBoardView(10));
+		Simulator test = new Simulator(new GameBoardView(10));
 		for(int i=0 ; i<10; i++) {
 			test.pressRandomButton();
 		}
