@@ -2,12 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
-
-import javax.swing.JOptionPane;
-
 import model.GameBoard;
-import robot.SimulatorController;
 import view.GameBoardView;
 
 /**
