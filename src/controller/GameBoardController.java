@@ -7,7 +7,6 @@ import javax.swing.JButton;
 
 import model.GameBoard;
 import view.GameBoardView;
-import view.StartScreen;
 
 public class GameBoardController {
 	private GameBoardView gui = null;
@@ -22,9 +21,6 @@ public class GameBoardController {
 	}
 	
 	public void startGame() {
-		StartScreen startScreen = new StartScreen();
-		int size = startScreen.selectBoardSize(); // popup selection
-		
 	}
 	
 	public void receiveInput() {
@@ -66,6 +62,8 @@ public class GameBoardController {
                 }
             }
             //TODO process button clicks
+            //set text
+            //disable button
         }
     }
 	
