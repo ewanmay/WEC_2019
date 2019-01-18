@@ -155,6 +155,7 @@ public class GameBoardController {
 		private void setButtonColor(JButton button, int buttonDisplay) {
 			System.out.println("set button color: "+buttonDisplay);
 		    button.setOpaque(true);
+		    
 			switch(buttonDisplay) {
 			case 1:
 				button.setBackground(Color.BLUE);
@@ -181,7 +182,6 @@ public class GameBoardController {
 				button.setBackground(Color.GRAY);
 				break;
 			default: 
-				button.setBackground(Color.BLACK);
 				break;
 			}
 		}
