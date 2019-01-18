@@ -10,7 +10,7 @@ import java.util.Random;
 
 import view.GameBoardView;
 
-public class Simuator {
+public class Simulator {
 
 	Robot robot;
 	
@@ -20,7 +20,7 @@ public class Simuator {
 	
 	Component resetButton;
 	
-	public Simuator(GameBoardView theGui) {
+	public Simulator(GameBoardView theGui) {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {
@@ -79,9 +79,13 @@ public class Simuator {
 		
 	}
 	
+	public void pressButton(int xPos, int yPos) {
+		mouseMoveAndClick(buttonComponents[xPos][yPos]);
+	}
+	
 	
 	public static void main(String[] args) {
-		Simuator test = new Simuator(new GameBoardView(10));
+		Simulator test = new Simulator(new GameBoardView(10));
 		for(int i=0 ; i<10; i++) {
 			test.pressRandomButton();
 		}
