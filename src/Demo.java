@@ -16,7 +16,7 @@ public class Demo {
 			GameBoardView view = new GameBoardView(sideLength);
 			GameBoardController controller = new GameBoardController(view, model, sideLength);
 		}
-		
+
 	}
 
 }
