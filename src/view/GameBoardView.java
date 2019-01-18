@@ -27,7 +27,10 @@ public class GameBoardView extends JFrame{
 	 * sideLength of gameBoard. Number of Buttons = sideLength^2
 	 */
 	private int sideLength;
-
+	/**
+	 * the number of cleared spaces on the grid
+	 */
+	private int clearedSpaces = 0;
 	/**
 	 * reset button
 	 */
@@ -117,6 +120,24 @@ public class GameBoardView extends JFrame{
 		}      
 	}
 
+	/**
+	 * increment clearedSpaces by 1
+	 */
+	public void incrementClearedSpaces() {
+		clearedSpaces++;
+	}
+	
+	/**
+	 * check if user has won
+	 */
+	public Boolean gameFinished() {
+		if(clearedSpaces == sideLength*sideLength - sideLength)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
 
 	/**
 	 * sets the button text for the JButton located at [row][col]

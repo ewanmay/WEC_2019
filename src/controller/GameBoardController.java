@@ -106,6 +106,7 @@ public class GameBoardController {
 			}
 			setButtonAppearance(buttonClicked, row, col);
 			board.incrementClearedSpaces();
+			gui.incrementClearedSpaces();
 			if(board.checkWin()){
 				//game over, all spaces cleared
 				System.out.println("All Cleared");
