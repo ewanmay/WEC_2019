@@ -113,6 +113,7 @@ public class GameBoardController {
             		button.setIcon(new ImageIcon("/res/square.png"));  
             		JOptionPane.showMessageDialog(null, "Basin Hit!", "Lion Inc.", JOptionPane.ERROR_MESSAGE);
             		reset();
+            		return;
             }
             else if(buttonDisplay == 0) {
             		//empty space with no adjacent basins
@@ -165,6 +166,7 @@ public class GameBoardController {
             		System.out.println("All Cleared");
 	            	JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
 	        		reset();
+	        		return;
             }
         }
     }
