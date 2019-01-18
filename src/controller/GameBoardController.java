@@ -63,6 +63,7 @@ public class GameBoardController {
             buttonClicked.setText("T"); // TODO test text
             //disable button
             buttonClicked.setEnabled(false);
+            int buttonValue = board.boardAt(x, y)
         }
     }
 	

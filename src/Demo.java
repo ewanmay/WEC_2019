@@ -14,6 +14,7 @@ public class Demo {
 		else {
 			GameBoard model = new GameBoard(sideLength);
 			GameBoardView view = new GameBoardView(sideLength);
+			@SuppressWarnings("unused")
 			GameBoardController controller = new GameBoardController(view, model, sideLength);
 		}
 
