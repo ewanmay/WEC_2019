@@ -96,6 +96,7 @@ public class GameBoardController {
 			int row = -1, col = -1;
 			//find which button was clicked
 			JButton buttonClicked = (JButton)e.getSource();
+
 			String[] buttonName = buttonClicked.getName().split(", ");
 			try {
 				row = Integer.parseInt(buttonName[0]);

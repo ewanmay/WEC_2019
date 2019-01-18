@@ -1,7 +1,9 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -103,9 +105,10 @@ public class GameBoardView extends JFrame{
 				JButton b = new JButton();
 				b.setText("");
 				b.setName(""+ i + ", "+ j); //for IDing upon click
-				b.setPreferredSize(new Dimension(40,40));
-
+				b.setPreferredSize(new Dimension(80,80));
 				b.setFocusPainted(false); // don't highlight selected buttons
+//				b.setFont(new Font("Arial", Font.PLAIN, 8));
+				b.setMargin(new Insets(0, 0, 0, 0));
 				buttons[i][j] = b;
 				gamePanel.add(b);
 			}
