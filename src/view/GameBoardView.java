@@ -108,6 +108,8 @@ public class GameBoardView extends JFrame{
 				b.setPreferredSize(new Dimension(80,80));
 				b.setFocusPainted(false); // don't highlight selected buttons
 				b.setFont(new Font("Arial", Font.PLAIN, 11));
+			//	b.setMargin(new Insets(0, 0, 0, 0));
+
 				buttons[i][j] = b;
 				gamePanel.add(b);
 			}
