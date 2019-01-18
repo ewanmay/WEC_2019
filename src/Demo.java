@@ -7,14 +7,17 @@ public class Demo {
 	public static void main(String[] args) {
 		
 		StartScreen gameStarter = new StartScreen();
-		int boardLength = gameStarter.selectBoardSize();
 
-		GameBoard model = new GameBoard(boardLength);
-		GameBoardView view = new GameBoardView(boardLength);
-		
-		GameBoardController controller = new GameBoardController(view, model, boardLength);
-		
-		
+		int sideLength = gameStarter.selectBoardSize();
+		if(sideLength == -1) {
+			System.out.println("Error selecting board size.");
+		}
+		else {
+			GameBoard model = new GameBoard(sideLength);
+			GameBoardView view = new GameBoardView(sideLength);
+			GameBoardController controller = new GameBoardController(view, model, sideLength);
+		}
+
 
 	}
 
