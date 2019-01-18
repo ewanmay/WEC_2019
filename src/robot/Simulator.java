@@ -97,7 +97,6 @@ public class Simulator {
 				|| Math.abs(location.y - yLoc + 20) > 10);
 		robot.mousePress(InputEvent.BUTTON1_MASK);
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);
-		robot.delay(1000);
 
 	}
 	
