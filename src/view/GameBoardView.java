@@ -3,7 +3,6 @@ package view;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -118,7 +117,7 @@ public class GameBoardView extends JFrame{
      * @param text the button text
      * @param e the ActionListener
      */
-    public void setButtonListener(int row, int col, ActionListener e) {
+    public void setGridButtonListener(int row, int col, ActionListener e) {
 		buttons[row][col].addActionListener(e);
     }
     
@@ -133,15 +132,9 @@ public class GameBoardView extends JFrame{
     /**
      * @return the 2D array of JButtons
      */
-    public JButton[][] getButtons() {
+    public JButton[][] getGridButtons() {
     		return buttons;
     }
-    
-        
-    //TODO main for testing. remove or comment out later
-    //    public static void main(String[] args) {
-    //		GameBoardView g = new GameBoardView(20);
-    //	}
     
     
 }
