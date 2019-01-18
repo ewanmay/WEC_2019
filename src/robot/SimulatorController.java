@@ -35,7 +35,7 @@ public class SimulatorController {
 			for(int j = 0; j < components[i].length; i++)
 			{
 				JButton temp = components[i][j];
-				if(temp.getText().equals("0"))
+				if(temp.getText().equals(""))
 				{
 					for(int k = i-1; k < i+2; k+=2)
 					{
