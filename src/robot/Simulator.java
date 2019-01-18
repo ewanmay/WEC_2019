@@ -55,6 +55,7 @@ public class Simulator {
 		resetButton = (JButton)components1[0];
 		
 		repopulateButtons();
+		robot.delay(1000);
 	}
 	
 	/**
@@ -85,13 +86,18 @@ public class Simulator {
 	 */
 	public void mouseMoveAndClick(Component c){
 		Point location = c.getLocationOnScreen();
+		
+		int xLoc, yLoc;
 		do {
 		robot.mouseMove( location.x + 20, location.y + 20 );
-		}while(MouseInfo.getPointerInfo().getLocation().x != location.x + 20
-				&& MouseInfo.getPointerInfo().getLocation().y != location.y + 20);
+		robot.delay(100);
+		xLoc = MouseInfo.getPointerInfo().getLocation().x;
+		yLoc = MouseInfo.getPointerInfo().getLocation().y;
+		}while( Math.abs(location.x - xLoc + 20) > 10
+				|| Math.abs(location.y - yLoc + 20) > 10);
 		robot.mousePress(InputEvent.BUTTON1_MASK);
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);
-		robot.delay(500);
+
 	}
 	
 	/**
@@ -103,25 +109,26 @@ public class Simulator {
 		r = new Random();
 		int yPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
 		mouseMoveAndClick(buttonComponents[xPos][yPos]);
-		repopulateButtons();
+		//repopulateButtons();
 	}
 	
 	/**
-	 * Press a button, given its coordiantes in the 2D array
+	 * Press a button, given its coordinates in the 2D array
 	 * @param xPos
 	 * @param yPos
 	 */
 	public void pressButton(int xPos, int yPos) {
 		mouseMoveAndClick(buttonComponents[xPos][yPos]);
-		repopulateButtons();
+		//repopulateButtons();
 	}
 	
-	
-	public static void main(String[] args) {
-		Simulator test = new Simulator(new GameBoardView(10));
-		for(int i=0 ; i<10; i++) {
-			test.pressRandomButton();
-		}
+	/**
+	 * returns the gui that is needed to know if bot has won
+	 * @return gui that bot is trying to solve
+	 */
+	public GameBoardView getGUI()
+	{
+		return gui;
 	}
 
 }
