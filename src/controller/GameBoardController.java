@@ -1,8 +1,8 @@
 package controller;
 
+import StartScreen;
 import model.GameBoard;
 import view.GameBoardView;
-import view.StartScreen;
 
 public class GameBoardController {
 	GameBoardView gui = null;
