@@ -8,25 +8,25 @@ public class SimulatorController {
 	
 	JButton[][] components;
 	ArrayList<JButton> readyClicks;
-	ArrayList<JButton> basinBlocks;
+	ArrayList<Coordinate> basinBlocks;
 	Simulator robot;
 	
 		
 	public SimulatorController(GameBoardView gui)
 	{
 		readyClicks = new ArrayList<JButton>();
-		basinBlocks = new ArrayList<JButton>();
+		basinBlocks = new ArrayList<Coordinate>();
 		robot = new Simulator(gui);
 		components = robot.getButtonComponents();
 	}
 	
 	public void controlGame() {
-		robot.pressRandomButton();
+		robot.pressRandomButton(basinBlocks);
 		while(!robot.getGUI().getGameLost() && !robot.getGUI().gameFinished()) {
 			if(!nextClick()) {
 				nextSpots();
 				if(!nextClick())
-					robot.pressRandomButton();
+					robot.pressRandomButton(basinBlocks);
 			}
 			
 	
@@ -57,10 +57,10 @@ public class SimulatorController {
 						}
 					}
 				}
-				if(temp.getText().equals("1") && temp.getIcon() == null && !components[i][j].isEnabled())
-				{
-					checkBlocksAroundOne(i, j);
-				}
+//				if(temp.getText().equals("1") && temp.getIcon() == null && !components[i][j].isEnabled() && readyClicks.size() > 0)
+//				{
+//					checkBlocksAroundOne(i, j);
+//				}
 			}
 		}
 	}
@@ -90,7 +90,7 @@ public class SimulatorController {
 					{
 						if(components[k][h].isEnabled())
 						{
-							basinBlocks.add(components[k][h]);
+							basinBlocks.add(new Coordinate(k,h));
 							fixSurroundingBlocks(k, h);
 						}
 					}
@@ -109,6 +109,7 @@ public class SimulatorController {
 	
 	public void fixSurroundingBlocks(int k, int h)
 	{
+		//if(components[k][h].getText().equals("1")) {
 		for(int i = k - 1; i < k+2 && i >= 0 && i < components.length; i++)
 		{
 			for(int j = h - 1; j < h + 2 && j >= 0 && j < components.length; j++)
@@ -119,35 +120,43 @@ public class SimulatorController {
 				}
 			}
 		}
+		//}
 	}
 	
 	public void surroundingBlockCheck(int i, int j, int badI, int badJ)
 	{
 		// Check how many blocks are available around block
-		int numAvailable  = 0;
-		for(int k = i - 1; k < i + 2 && k >= 0 && k < components.length; k++)
-		{
-			for(int h = j - 1; h < i + 2 && h < components.length && h >= 0; h++)
-			{
-				if(components[k][h].isEnabled())
+		if(components[i][j].getText().equals("1")) {
+				int numAvailable  = 0;
+				Boolean validBlockToClick = false;
+				for(int k = i - 1; k < i + 2 && k >= 0 && k < components.length; k++)
 				{
-					numAvailable++;
-				}
-			}
-		}
-		if(numAvailable > 1)
-		{
-			// This blocks surrounding blocks are good to click
-			for(int k = i - 1; k < i + 2 && k >= 0 && k < components.length; k++)
-			{
-				for(int h = j - 1; h < i + 2 && h < components.length && h >= 0; h++)
-				{
-					if(k != badI && h != badJ && components[k][h].isEnabled()) 
+					for(int h = j - 1; h < j + 2 && h < components.length && h >= 0; h++)
 					{
-						robot.mouseMoveAndClick(components[k][h]);
+						if(components[k][h].isEnabled())
+						{
+							numAvailable++;
+						}
+						if(k == badI && h == badJ) {
+							validBlockToClick = true;
+							//numAvailable--;
+						}
 					}
 				}
-			}
+				if((numAvailable > 1) && validBlockToClick)
+				{
+					// This blocks surrounding blocks are good to click
+					for(int k = i - 1; k < i + 2 && k >= 0 && k < components.length; k++)
+					{
+						for(int h = j - 1; h < j + 2 && h < components.length && h >= 0; h++)
+						{
+							if(k != badI && h != badJ && components[k][h].isEnabled()) 
+							{
+								robot.mouseMoveAndClick(components[k][h]);
+							}
+						}
+					}
+				}
 		}
 	}
 	

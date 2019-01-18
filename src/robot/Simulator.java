@@ -6,6 +6,7 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JButton;
 import view.GameBoardView;
@@ -106,13 +107,34 @@ public class Simulator {
 	/**
 	 * select a random button and click it
 	 */
-	public void pressRandomButton() {
-		Random r = new Random();
-		int xPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
-		r = new Random();
-		int yPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
-		mouseMoveAndClick(buttonComponents[xPos][yPos]);
-		//repopulateButtons();
+	public void pressRandomButton(ArrayList<Coordinate> badButtons) {
+		Boolean foundNum = false;
+		//while(!foundNum)
+		{
+			Random r = new Random();
+			int xPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
+			r = new Random();
+			int yPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
+			//if(goodRandomNumber(badButtons, xPos, yPos)) {
+				mouseMoveAndClick(buttonComponents[xPos][yPos]);
+				foundNum = true;
+		//	}
+			//repopulateButtons();
+		}
+	}
+	
+	/**
+	 * checkArrayList for good numbers to randomly hit
+	 */
+	public Boolean goodRandomNumber(ArrayList<Coordinate> badButtons, int xPos, int yPos)
+	{
+		Boolean good = true;
+		for(int i = 0; i < badButtons.size(); i++)
+		{
+			if(badButtons.get(i).getX() == xPos && badButtons.get(i).getY() == yPos)
+				good = false;
+		}
+		return good;
 	}
 	
 	/**
