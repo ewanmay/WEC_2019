@@ -31,10 +31,6 @@ public class Simulator {
 	 */
 	private JButton [][] buttonComponents;
 	
-	/**
-	 * the reset button to control
-	 */
-	private JButton resetButton;
 	
 	/**
 	 * Ctor to init the Robot, given theGUI to control
@@ -54,27 +50,20 @@ public class Simulator {
 			//wait for GUI to show
 		}
 		
-		Component components1 [] = gui.getResetButtonPanel().getComponents();
-		resetButton = (JButton)components1[0];
 		
-		repopulateButtons();
-		robot.delay(1000);
-	}
-	
-	/**
-	 * update the local state of the buttons, called after every click
-	 */
-	private void repopulateButtons() {
-		Component components2 [] = gui.getGamePanel().getComponents();
+		Component components [] = gui.getGamePanel().getComponents();
 		
-		buttonComponents = new JButton[(int) Math.sqrt(components2.length)][(int) Math.sqrt(components2.length)];
+		buttonComponents = new JButton[(int) Math.sqrt(components.length)][(int) Math.sqrt(components.length)];
 		
 		for(int j=0, k=0; j < buttonComponents.length; j++) {
 			for(int i=0; i < buttonComponents[j].length; i++, k++) {
-				buttonComponents[i][j] = (JButton)components2[k];
+				buttonComponents[i][j] = (JButton)components[k];
 			}
 		}
+		
+		robot.delay(1000);
 	}
+	
 	
 	public JButton[][] getButtonComponents()
 	{
@@ -107,6 +96,16 @@ public class Simulator {
 	/**
 	 * select a random button and click it
 	 */
+	public void pressRandomButton() {
+		int xPos;
+		int yPos;
+		do {
+			Random r = new Random();
+			xPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
+			r = new Random();
+			yPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
+		}while(!buttonComponents[xPos][yPos].isEnabled());
+		mouseMoveAndClick(buttonComponents[xPos][yPos]);
 	public void pressRandomButton(ArrayList<Coordinate> badButtons) {
 		Boolean foundNum = false;
 		//while(!foundNum)
@@ -144,7 +143,6 @@ public class Simulator {
 	 */
 	public void pressButton(int xPos, int yPos) {
 		mouseMoveAndClick(buttonComponents[xPos][yPos]);
-		//repopulateButtons();
 	}
 	
 	/**
