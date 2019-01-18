@@ -66,6 +66,11 @@ public class GameBoardView extends JFrame{
 //		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
 		pack();
+		if(sideLength>=20) {
+			//auto maximize if game is MEDIUM or LARGE
+			setExtendedState(JFrame.MAXIMIZED_BOTH);
+		}
+
 		setLocationRelativeTo(null); // show in center of screen
 		setVisible(true);
 
@@ -95,8 +100,9 @@ public class GameBoardView extends JFrame{
 	 */
 	public void makeGamePanel(){
 		gamePanel.setLayout(new GridLayout(sideLength,sideLength));
-		gamePanel.setMaximumSize(new Dimension(sideLength*44,sideLength*30));
+//		gamePanel.setMaximumSize(new Dimension(sideLength*44,sideLength*30));
 		gamePanel.setMinimumSize(new Dimension(sideLength*10,sideLength*10));
+		
 		
 		initializeButtons();
 		gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -113,11 +119,9 @@ public class GameBoardView extends JFrame{
 				JButton b = new JButton();
 				b.setText("");
 				b.setName(""+ i + ", "+ j); //for IDing upon click
-				b.setPreferredSize(new Dimension(80,80));
+				b.setPreferredSize(new Dimension(80,80)); // 80,80
 				b.setFocusPainted(false); // don't highlight selected buttons
 				b.setFont(new Font("Arial", Font.PLAIN, 11));
-			//	b.setMargin(new Insets(0, 0, 0, 0));
-
 				buttons[i][j] = b;
 				gamePanel.add(b);
 			}

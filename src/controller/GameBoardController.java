@@ -140,7 +140,8 @@ public class GameBoardController {
 			else if(buttonDisplay == 0) {
 				//empty space with no adjacent basins
 				button.setText("");
-				button.setBackground(Color.DARK_GRAY);
+				button.setOpaque(true);
+				button.setBackground(Color.DARK_GRAY); // TODO Not wokring on MAC?
 			}
 			else {
 				setButtonColor(button, buttonDisplay);

@@ -64,12 +64,20 @@ public class SimulatorController {
 	
 	public void checkSurroundingBlocks(int k, int h)
 	{
-		if(k >= 0 && k < components.length && h >= 0 && h < components.length && components[k][h].isEnabled())
+		if(k >= 0 && k < components.length && h >= 0 && h < components.length && components[k][h].isEnabled() && notInList(components[k][h]))
 		{
 			readyClicks.add(components[k][h]);
 		}
 	}
 	
+	private boolean notInList(JButton button) {
+		for(int i = 0; i<readyClicks.size(); i++) {
+			if(button == readyClicks.get(i))
+				return false;
+		}
+		return true;
+	}
+
 	public boolean nextClick() {
 		if(readyClicks.size() > 0) {
 			robot.mouseMoveAndClick(readyClicks.remove(0));
