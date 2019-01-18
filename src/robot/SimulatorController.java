@@ -38,9 +38,13 @@ public class SimulatorController {
 			}
 		}
 		
-		return null;
 	}
 	
-	public Coordinate 
+	public Coordinate nextClick() {
+		if(readyClicks.size() > 0)
+			return readyClicks.remove(0);
+		else
+			return null;
+	}
 
 }
