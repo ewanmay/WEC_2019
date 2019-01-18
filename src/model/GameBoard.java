@@ -89,7 +89,7 @@ public class GameBoard {
 	
 	/**
 	 * Returns the vale in the board array at a given index.
-	  * @param x horizontal position.
+	 * @param x horizontal position.
 	 * @param y vertical position.
 	 * @return the value at that position.
 	 */
@@ -103,6 +103,9 @@ public class GameBoard {
 		}
 	}
 	
+	/**
+	 * increment clearedSpaces by 1
+	 */
 	public void incrementClearedSpaces() {
 		clearedSpaces++;
 	}

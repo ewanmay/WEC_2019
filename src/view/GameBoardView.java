@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * the view class showing the GUI. extends JFrame
+ * 
+ */
 @SuppressWarnings("serial")
 public class GameBoardView extends JFrame{
 	
@@ -66,6 +70,9 @@ public class GameBoardView extends JFrame{
 		add(resetButtonPanel);
 	}
     
+    /**
+     * init the reset button
+     */
     private void makeResetButton(){
 		resetButton = new JButton("Reset");
         resetButton.setFocusPainted(false); // don't highlight as selected

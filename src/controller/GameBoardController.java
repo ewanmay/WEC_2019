@@ -3,12 +3,12 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.GameBoard;
 import view.GameBoardView;
+
 /**
  * Controller class that sets all button listeners
  */
@@ -70,7 +70,6 @@ public class GameBoardController {
 	}
 	
 	
-	
 	/**
 	 * set the button listener for each button in the grid
 	 */
@@ -94,7 +93,6 @@ public class GameBoardController {
             int row = -1, col = -1;
             //find which button was clicked
             JButton buttonClicked = (JButton)e.getSource();
-            JButton [][] buttons = gui.getGridButtons();
             String[] buttonName = buttonClicked.getName().split(", ");
             try {
 	            row = Integer.parseInt(buttonName[0]);
@@ -106,6 +104,12 @@ public class GameBoardController {
             setButtonAppearance(buttonClicked, row, col);
         }
         
+        /**
+         * Change the button text/icon based on number of adjacent basins
+         * @param button the button to change
+         * @param row the x coord
+         * @param col the y coord
+         */
         private void setButtonAppearance(JButton button, int row, int col) {
             //set text (number of adjacent basins)
             int buttonDisplay = board.boardAt(row, col);
