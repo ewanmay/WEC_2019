@@ -173,6 +173,7 @@ public class GameBoardController {
 
             	}
         			button.setText(""+buttonDisplay);
+        			button.repaint();
             }
             board.incrementClearedSpaces();
             button.setEnabled(false); //disable button

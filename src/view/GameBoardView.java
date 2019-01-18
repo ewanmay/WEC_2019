@@ -121,8 +121,8 @@ public class GameBoardView extends JFrame{
     /**
      * adds action listener for the specified JButton located at [row][col]
      * @param row the row
-     * @param col the col
-     * @param text the button text
+     * @param col the Column
+     * @param text the button text to display
      * @param e the ActionListener
      */
     public void setGridButtonListener(int row, int col, ActionListener e) {
