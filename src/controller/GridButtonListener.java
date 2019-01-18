@@ -159,5 +159,4 @@ public class GridButtonListener implements ActionListener{
 		}
 	}
 
-
-}//end of class ButtonListener
+}

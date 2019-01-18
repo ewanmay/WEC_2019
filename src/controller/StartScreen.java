@@ -1,14 +1,11 @@
 package controller;
 
-
-
 import javax.swing.JOptionPane;
 
 /**
  * StartScreen class that displays the initial screen that allows you to decide what board size you want
  *
  */
-
 public class StartScreen {
 	
 	/**
