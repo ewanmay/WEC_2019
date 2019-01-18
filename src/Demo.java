@@ -21,9 +21,10 @@ public class Demo {
 			GameBoard model = new GameBoard(sideLength);
 			GameBoardView view = new GameBoardView(sideLength);
 			@SuppressWarnings("unused")
-			GameBoardController controller = new GameBoardController(view, model, sideLength);
+			GameBoardController controller = new GameBoardController(view, model, sideLength, simulation);
 			
 			if(simulation) {
+				System.out.println("Simulation Mode.");
 				SimulatorController robot = new SimulatorController (view);
 				robot.controlGame();
 			}

@@ -41,6 +41,8 @@ public class Simulator {
 	 * @param theGui
 	 */
 	public Simulator(GameBoardView theGui) {
+		//NOTE: system preferences may need to be modified to grant Eclipse
+		// accessibilty access to control the mouse 
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {
@@ -49,7 +51,7 @@ public class Simulator {
 		gui = theGui;
 		
 		while (!gui.isShowing()) {
-			//wait for GUI to load
+			//wait for GUI to show
 		}
 		
 		Component components1 [] = gui.getResetButtonPanel().getComponents();

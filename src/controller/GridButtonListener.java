@@ -9,6 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+/**
+ * Button Listener for the grid buttons
+ */
 public class GridButtonListener implements ActionListener{
 
 	/**
@@ -107,6 +110,7 @@ public class GridButtonListener implements ActionListener{
 			button.setBackground(Color.DARK_GRAY); 
 		}
 		else {
+			//space with adjacent basins
 			setButtonColor(button, buttonDisplay);
 			button.setText(""+buttonDisplay);
 			int buttonHeight = button.getSize().height;
@@ -123,9 +127,8 @@ public class GridButtonListener implements ActionListener{
 	 * @param buttonDisplay integer representing which color to set 
 	 */
 	private void setButtonColor(JButton button, int buttonDisplay) {
-		System.out.println("set button color: "+buttonDisplay);
+//		System.out.println("set button color: "+buttonDisplay);
 		button.setOpaque(true);
-
 		switch(buttonDisplay) {
 		case 1:
 			button.setBackground(Color.CYAN);
@@ -156,5 +159,4 @@ public class GridButtonListener implements ActionListener{
 		}
 	}
 
-
-}//end of class ButtonListener
+}
