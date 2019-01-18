@@ -57,6 +57,11 @@ public class GameBoard {
 		
 	}
 
+	/**
+	 * Helper method to increment 'adjacent basin counts' around a basin
+	 * @param x horizontal position of the basin
+	 * @param y vertical position of the basin
+	 */
 	private void incrementCounts(int x, int y) {
 		for(int i = x-1; i <= x+1; i++) {
 			for(int j = y - 1; j <= y+1; j++) {
@@ -71,6 +76,22 @@ public class GameBoard {
 	
 	/**
 	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public int boardAt(int x, int y) {
+		if((x >= 0) && (x < sideLength) && (y >= 0) && (y < sideLength)) {
+			return board[x][y];
+		}
+		else {
+			System.out.println("Error, invalid board position");
+			return -2;
+		}
+	}
+	
+	/**
+	 * 
 	 */
 	public void printBoard() {
 		for(int y = 0; y < sideLength; y++ ) {
@@ -81,6 +102,12 @@ public class GameBoard {
 		}
 	}
 	
+	p
+	
+	/**
+	 * Main method to test class.
+	 * @param args
+	 */
 	public static void main(String [] args) {
 		GameBoard test = new GameBoard(20);
 		test.printBoard();
