@@ -51,16 +51,10 @@ public class GameBoardController {
             //find which button was clicked
             JButton buttonClicked = (JButton)e.getSource();
             JButton [][] buttons = gui.getButtons();
-            //TODO is this the best way?
-            //determine the row/col
-            for (int i = 0 ; i <3 ; i++){
-                for (int j = 0 ; j < 3 ; j++){
-                    if (buttonClicked==buttons[i][j]){
-                        row=i;
-                        col=j;
-                    }
-                }
-            }
+            String[] buttonName = buttonClicked.getName().split(", ");
+            row = Integer.parseInt(buttonName[0]);
+            col = Integer.parseInt(buttonName[1]);
+
             //TODO process button clicks
             //set text
             //disable button

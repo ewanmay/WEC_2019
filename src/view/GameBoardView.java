@@ -65,6 +65,7 @@ public class GameBoardView extends JFrame{
             for(int j = 0 ; j < sideLength ; j++){
                 buttons[i][j] = new JButton();
                 buttons[i][j].setText("");
+                buttons[i][j].setName(""+ i + ", "+ j);
                 buttons[i][j].setPreferredSize(new Dimension(40, 40));
 //              buttons[i][j].addActionListener(new ButtonListener());
                 gamePanel.add(buttons[i][j]);
