@@ -7,7 +7,7 @@ import java.util.Random;
 
 /**
  * 
- * @author Antoine
+ *
  *
  */
 public class GameBoard {
@@ -102,7 +102,6 @@ public class GameBoard {
 		}
 	}
 	
-	p
 	
 	/**
 	 * Main method to test class.
