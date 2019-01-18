@@ -11,7 +11,7 @@ import java.util.Random;
 import javax.swing.JButton;
 import view.GameBoardView;
 
-/*
+/**
  * Simulates running the program automatically.
  */
 public class Simulator {
