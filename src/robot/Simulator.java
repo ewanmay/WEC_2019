@@ -96,7 +96,7 @@ public class Simulator {
 	/**
 	 * select a random button and click it
 	 */
-	public void pressRandomButton() {
+	public void pressRandomButton(ArrayList<Coordinate> badButtons) {
 		int xPos;
 		int yPos;
 		do {
@@ -104,22 +104,8 @@ public class Simulator {
 			xPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
 			r = new Random();
 			yPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
-		}while(!buttonComponents[xPos][yPos].isEnabled());
+		}while(!buttonComponents[xPos][yPos].isEnabled() || !goodRandomNumber(badButtons, xPos, yPos) );
 		mouseMoveAndClick(buttonComponents[xPos][yPos]);
-	public void pressRandomButton(ArrayList<Coordinate> badButtons) {
-		Boolean foundNum = false;
-		//while(!foundNum)
-		{
-			Random r = new Random();
-			int xPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
-			r = new Random();
-			int yPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
-			//if(goodRandomNumber(badButtons, xPos, yPos)) {
-				mouseMoveAndClick(buttonComponents[xPos][yPos]);
-				foundNum = true;
-		//	}
-			//repopulateButtons();
-		}
 	}
 	
 	/**

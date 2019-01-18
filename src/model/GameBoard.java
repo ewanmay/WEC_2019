@@ -119,27 +119,6 @@ public class GameBoard {
 		return (clearedSpaces >= nonBasinSpaces);
 	}
 	
-	/**
-	 * For Testing. Prints the board to the console.
-	 */
-//	public void printBoard() {
-//		for(int y = 0; y < sideLength; y++ ) {
-//			for(int x = 0; x < sideLength; x++ ) {
-//				System.out.print(board[x][y] + " ");
-//			}
-//			System.out.println("");
-//		}
-//	}
-//	
-
-	/**
-	 * Main method to test class.
-	 * @param args command line arguments.
-	 */
-//	public static void main(String [] args) {
-//		GameBoard test = new GameBoard(10);
-//		test.printBoard();
-//	}
 
 	
 	

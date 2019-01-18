@@ -69,7 +69,7 @@ public class GameBoardController {
 		StartScreen gameStarter = new StartScreen();
 		sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {
-			System.err.println("Error selecting board size.");
+			System.out.println("No board size selected. Terminating...");
 			System.exit(1);
 		}
 		board = new GameBoard(sideLength);
