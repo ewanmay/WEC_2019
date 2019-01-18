@@ -197,6 +197,11 @@ public class GameBoardView extends JFrame{
 		return resetButtonPanel;
 	}
 	
+	public void setGameLost(Boolean b)
+	{
+		gameLost = b;
+	}
+	
 	/**
 	 * @return the gameLost
 	 */

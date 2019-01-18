@@ -113,7 +113,7 @@ public class Simulator {
 	}
 	
 	/**
-	 * Press a button, given its coordiantes in the 2D array
+	 * Press a button, given its coordinates in the 2D array
 	 * @param xPos
 	 * @param yPos
 	 */
@@ -122,12 +122,13 @@ public class Simulator {
 		//repopulateButtons();
 	}
 	
-	
-	public static void main(String[] args) {
-		Simulator test = new Simulator(new GameBoardView(10));
-		for(int i=0 ; i<10; i++) {
-			test.pressRandomButton();
-		}
+	/**
+	 * returns the gui that is needed to know if bot has won
+	 * @return gui that bot is trying to solve
+	 */
+	public GameBoardView getGUI()
+	{
+		return gui;
 	}
 
 }

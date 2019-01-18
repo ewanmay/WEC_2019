@@ -23,7 +23,7 @@ public class SimulatorController {
 	
 	public void controlGame() {
 		robot.pressRandomButton();
-		while(true) {
+		while(!robot.getGUI().getGameLost() && !robot.getGUI().gameFinished()) {
 			if(!nextClick()) {
 				nextSpots();
 				if(!nextClick())

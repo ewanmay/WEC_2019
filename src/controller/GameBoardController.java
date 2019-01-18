@@ -133,6 +133,7 @@ public class GameBoardController {
 				imageIcon = new ImageIcon(newImage);
 				button.setIcon(imageIcon);  
 				gui.repaint();
+				gui.setGameLost(true);
 				JOptionPane.showMessageDialog(null, "Basin Hit!", "Lion Inc.", JOptionPane.ERROR_MESSAGE);
 				reset();
 				return;
