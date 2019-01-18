@@ -7,9 +7,7 @@ import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.util.Random;
-
 import javax.swing.JButton;
-
 import view.GameBoardView;
 
 /*
@@ -38,7 +36,7 @@ public class Simulator {
 	private JButton resetButton;
 	
 	/**
-	 * Ctor to init the Robot, gien theGUI to control
+	 * Ctor to init the Robot, given theGUI to control
 	 * @param theGui
 	 */
 	public Simulator(GameBoardView theGui) {

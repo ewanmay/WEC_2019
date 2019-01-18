@@ -4,8 +4,6 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
-import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -107,24 +105,24 @@ public class GameBoardController {
 			}
 			setButtonAppearance(buttonClicked, row, col);
 		}
-        
-        /**
-         * Change the button text/icon based on number of adjacent basins
-         * @param button the button to change
-         * @param row the x Coordinate
-         * @param col the y Coordinate
-         */
+
+		/**
+		 * Change the button text/icon based on number of adjacent basins
+		 * @param button the button to change
+		 * @param row the x Coordinate
+		 * @param col the y Coordinate
+		 */
 		private void setButtonAppearance(JButton button, int row, int col) {
 			//set text (number of adjacent basins)
 			int buttonDisplay = board.boardAt(row, col);
 			if(buttonDisplay == -1) {
+				//a basin was hit
 				ImageIcon imageIcon = new ImageIcon("res" + "/" + "square.png");
 				Image image = imageIcon.getImage();
 				Image newImage = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
 				imageIcon = new ImageIcon(newImage);
 				button.setIcon(imageIcon);  
 				gui.repaint();
-
 				JOptionPane.showMessageDialog(null, "Basin Hit!", "Lion Inc.", JOptionPane.ERROR_MESSAGE);
 				reset();
 				return;
@@ -134,38 +132,7 @@ public class GameBoardController {
 				button.setText("");
 			}
 			else {
-            	switch(buttonDisplay) {
-            	case 1:
-            		button.setBackground(Color.BLUE);
-            		break;
-            	case 2:
-            		button.setBackground(Color.GREEN);
-            		break;
-            		
-            	case 3:
-            		button.setBackground(Color.RED);
-            		break;
-            		
-            	case 4:
-            		button.setBackground(Color.MAGENTA);
-            		break;
-            		
-            	case 5:
-            		button.setBackground(Color.ORANGE);
-            		break;
-            		
-            	case 6:
-            		button.setBackground(Color.CYAN);
-            		break;
-            		
-            	case 7:
-            		button.setBackground(Color.YELLOW);
-            		break;
-            		
-            	case 8:
-            		button.setBackground(Color.GRAY);
-            		break;
-            	}
+				setButtonColor(button, buttonDisplay);
 				button.setText(""+buttonDisplay);
 				button.repaint();
 			}
@@ -179,6 +146,45 @@ public class GameBoardController {
 				return;
 			}
 		}
-	}
+
+		/**
+		 * set the background color of a button
+		 * @param button
+		 * @param buttonDisplay integer representing which color to set 
+		 */
+		private void setButtonColor(JButton button, int buttonDisplay) {
+			System.out.println("set button color: "+buttonDisplay);
+		    button.setOpaque(true);
+			switch(buttonDisplay) {
+			case 1:
+				button.setBackground(Color.BLUE);
+				break;
+			case 2:
+				button.setBackground(Color.GREEN);
+				break;
+			case 3:
+				button.setBackground(Color.RED);
+				break;
+			case 4:
+				button.setBackground(Color.MAGENTA);
+				break;
+			case 5:
+				button.setBackground(Color.ORANGE);
+				break;
+			case 6:
+				button.setBackground(Color.CYAN);
+				break;
+			case 7:
+				button.setBackground(Color.YELLOW);
+				break;
+			case 8:
+				button.setBackground(Color.GRAY);
+				break;
+			default: 
+				button.setBackground(Color.BLACK);
+				break;
+			}
+		}
+	}//end of inner class ButtonListener
 
 }
