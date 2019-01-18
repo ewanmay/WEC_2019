@@ -2,6 +2,7 @@ import controller.GameBoardController;
 import controller.SelectSimulator;
 import controller.StartScreen;
 import model.GameBoard;
+import robot.SimulatorController;
 import view.GameBoardView;
 
 public class Demo {
@@ -22,6 +23,11 @@ public class Demo {
 			GameBoardView view = new GameBoardView(sideLength);
 			@SuppressWarnings("unused")
 			GameBoardController controller = new GameBoardController(view, model, sideLength);
+			
+			if(simulation) {
+				SimulatorController robot = new SimulatorController (view);
+				robot.controlGame();
+			}
 		}
 
 
