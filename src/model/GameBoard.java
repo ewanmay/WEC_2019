@@ -22,13 +22,23 @@ public class GameBoard {
 	/**
 	 * the number of cleared spaces on the grid
 	 */
-	private int clearedSpaces;
+	private int clearedSpaces = 0;
+	/**
+	 * the number of nonBasin (safe) spaces
+	 */
+	private int nonBasinSpaces;
+
 	
 	/**
 	 * Constructs the game board.
 	 */
 	public GameBoard(int length) {
 		sideLength = length;
+		nonBasinSpaces = sideLength*sideLength - sideLength;
+		
+		System.out.println("Board size: "+sideLength+" by "+sideLength);
+		System.out.println("Non-Basin Spaces: "+nonBasinSpaces);
+
 		board = new int[length][length]; 
 		populateBoard();
 	}
@@ -93,11 +103,16 @@ public class GameBoard {
 		}
 	}
 	
+	public void incrementClearedSpaces() {
+		clearedSpaces++;
+	}
+	
+	
 	/**
 	 * @return true if all the spaces have been cleared (only basins remain)
 	 */
 	public boolean checkWin() {
-		int nonBasinSpaces =  sideLength*sideLength - sideLength;
+		System.out.println("Cleared Spaces: "+clearedSpaces);
 		return (clearedSpaces >= nonBasinSpaces);
 	}
 	
