@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -105,13 +107,13 @@ public class GameBoardController {
 			}
 			setButtonAppearance(buttonClicked, row, col);
 		}
-
-		/**
-		 * Change the button text/icon based on number of adjacent basins
-		 * @param button the button to change
-		 * @param row the x coord
-		 * @param col the y coord
-		 */
+        
+        /**
+         * Change the button text/icon based on number of adjacent basins
+         * @param button the button to change
+         * @param row the x Coordinate
+         * @param col the y Coordinate
+         */
 		private void setButtonAppearance(JButton button, int row, int col) {
 			//set text (number of adjacent basins)
 			int buttonDisplay = board.boardAt(row, col);
@@ -132,43 +134,38 @@ public class GameBoardController {
 				button.setText("");
 			}
 			else {
-				switch(buttonDisplay) {
-				case 1:
-					button.setForeground(Color.BLUE);
-					break;
-				case 2:
-					button.setForeground(Color.GREEN);
-					break;
-
-				case 3:
-					button.setForeground(Color.RED);
-					break;
-
-				case 4:
-					button.setForeground(Color.MAGENTA);
-					break;
-
-				case 5:
-					button.setForeground(Color.ORANGE);
-					break;
-
-				case 6:
-					button.setForeground(Color.CYAN);
-					break;
-
-				case 7:
-					button.setForeground(Color.BLACK);
-					break;
-
-				case 8:
-					button.setForeground(Color.GRAY);
-					break;
-
-				default: 
-					button.setForeground(Color.BLACK);
-					break;
-
-				}
+            	switch(buttonDisplay) {
+            	case 1:
+            		button.setBackground(Color.BLUE);
+            		break;
+            	case 2:
+            		button.setBackground(Color.GREEN);
+            		break;
+            		
+            	case 3:
+            		button.setBackground(Color.RED);
+            		break;
+            		
+            	case 4:
+            		button.setBackground(Color.MAGENTA);
+            		break;
+            		
+            	case 5:
+            		button.setBackground(Color.ORANGE);
+            		break;
+            		
+            	case 6:
+            		button.setBackground(Color.CYAN);
+            		break;
+            		
+            	case 7:
+            		button.setBackground(Color.YELLOW);
+            		break;
+            		
+            	case 8:
+            		button.setBackground(Color.GRAY);
+            		break;
+            	}
 				button.setText(""+buttonDisplay);
 				button.repaint();
 			}
