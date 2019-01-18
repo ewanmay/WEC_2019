@@ -9,7 +9,7 @@ public class StartScreen {
 	}
 	
 	public int SelectBoardSize() {
-		Object[] inputButtons = {"Small", "Medium", "Large"};
+		String[] inputButtons = {"Small", "Medium", "Large"};
 		
 		int result = JOptionPane.showOptionDialog(null, "Select Size of Board", "Select size of board", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, inputButtons, null);
 		
