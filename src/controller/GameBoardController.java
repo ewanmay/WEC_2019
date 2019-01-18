@@ -104,6 +104,14 @@ public class GameBoardController {
 				System.exit(1);
 			}
 			setButtonAppearance(buttonClicked, row, col);
+			board.incrementClearedSpaces();
+			if(board.checkWin()){
+				//game over, all spaces cleared
+				System.out.println("All Cleared");
+				JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
+				reset();
+				return;
+			}
 		}
 
 		/**
@@ -136,15 +144,7 @@ public class GameBoardController {
 				button.setText(""+buttonDisplay);
 				button.repaint();
 			}
-			board.incrementClearedSpaces();
 			button.setEnabled(false); //disable button
-			if(board.checkWin()){
-				//game over, all spaces cleared
-				System.out.println("All Cleared");
-				JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
-				reset();
-				return;
-			}
 		}
 
 		/**
