@@ -120,12 +120,14 @@ public class GameBoardController {
             }
             else {
             		//show num of adjacent basins
+            		//TODO color of text display
         			button.setText(""+buttonDisplay);
             }
             //disable button
             button.setEnabled(false);
             if(board.checkWin()){
             		//game over, all spaces cleared
+            		System.out.println("All Cleared");
 	            	JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
 	        		reset();
             }
