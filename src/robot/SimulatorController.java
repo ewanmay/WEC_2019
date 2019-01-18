@@ -98,7 +98,7 @@ public class SimulatorController {
 	/**
 	 * Finds the blocks around a "1" block to see if a mine can be isolated
 	 * @param i x-coordinate of 
-	 * @param j
+	 * @param j y-coordinate
 	 */
 	public void checkBlocksAroundOne(int i, int j)
 	{

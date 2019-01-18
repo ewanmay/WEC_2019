@@ -31,9 +31,10 @@ public class GameBoardController {
 	
 	/**
 	 * Constructor to set the view, model, and sideLength, and sets button listeners
-	 * @param gameView
-	 * @param boardModel
-	 * @param sideLength
+	 * @param gameView view of game
+	 * @param boardModel model of board
+	 * @param sideLength length of side
+	 * @param sim the robot
 	 */
 	public GameBoardController(GameBoardView gameView, GameBoard boardModel, int sideLength, boolean sim) {
 		board = boardModel;
@@ -89,11 +90,18 @@ public class GameBoardController {
 		}
 	}
 
-
+	/**
+	 * get the gui held by controller
+	 * @return the gui
+	 */
 	public GameBoardView getGui() {
 		return gui;
 	}
 
+	/**
+	 * get the board from model
+	 * @return the board used for game
+	 */
 	public GameBoard getBoard() {
 		return board;
 	}

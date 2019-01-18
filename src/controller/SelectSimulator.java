@@ -17,7 +17,7 @@ public class SelectSimulator {
 	
 	/**
 	 * method that allows users to select simulation mode or play mode
-
+	 * @return boolean to see is user wants to simulate
 	 */
 	public boolean selectSimulateMode() {
 		String[] inputButtons = {"Simulation", "Manual"};

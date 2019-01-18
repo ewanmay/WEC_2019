@@ -34,7 +34,7 @@ public class Simulator {
 	
 	/**
 	 * Ctor to init the Robot, given theGUI to control
-	 * @param theGui
+	 * @param theGui gui that will  be displayed
 	 */
 	public Simulator(GameBoardView theGui) {
 		//NOTE: system preferences may need to be modified to grant Eclipse
@@ -72,9 +72,8 @@ public class Simulator {
 	
 	/**
 	 * This function was made using the following source.
-	 * https://www.developer.com/java/other/article.php/2241561/An-Automated-Test-Program-using-the-Java-Robot-Class.htm
-	 * @param xLoc
-	 * @param yLoc
+	 * https://www.developer.com/java/other/article.php/2241561/An-Automated-Test-Program-using-the-Java-Robot-Class.htm\
+	 * @param c is the component to click on
 	 */
 	public void mouseMoveAndClick(Component c){
 		Point location = c.getLocationOnScreen();
@@ -95,6 +94,7 @@ public class Simulator {
 	
 	/**
 	 * select a random button and click it
+	 * @param badButtons to click
 	 */
 	public void pressRandomButton(ArrayList<Coordinate> badButtons) {
 		int xPos;
@@ -110,6 +110,10 @@ public class Simulator {
 	
 	/**
 	 * checkArrayList for good numbers to randomly hit
+	 * @param badButtons to check
+	 * @param xPos for x
+	 * @param yPos for y
+	 * @return whether number is good
 	 */
 	public Boolean goodRandomNumber(ArrayList<Coordinate> badButtons, int xPos, int yPos)
 	{
@@ -124,8 +128,8 @@ public class Simulator {
 	
 	/**
 	 * Press a button, given its coordinates in the 2D array
-	 * @param xPos
-	 * @param yPos
+	 * @param xPos x-coordinate
+	 * @param yPos y-coordinate
 	 */
 	public void pressButton(int xPos, int yPos) {
 		mouseMoveAndClick(buttonComponents[xPos][yPos]);

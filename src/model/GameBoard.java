@@ -31,6 +31,7 @@ public class GameBoard {
 	
 	/**
 	 * Constructs the game board.
+	 * @param length the size of game board to be displayed
 	 */
 	public GameBoard(int length) {
 		sideLength = length;

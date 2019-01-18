@@ -21,9 +21,7 @@ public class GridButtonListener implements ActionListener{
 	
 	/**
 	 * Constructor to init the controller
-	 * @param g
-	 * @param b
-	 * @param con
+	 * @param con the controller for game
 	 */
 	public GridButtonListener(GameBoardController con) {
 		controller = con;
@@ -123,7 +121,7 @@ public class GridButtonListener implements ActionListener{
 
 	/**
 	 * set the background color of a button
-	 * @param button
+	 * @param button to be set
 	 * @param buttonDisplay integer representing which color to set 
 	 */
 	private void setButtonColor(JButton button, int buttonDisplay) {
