@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.GameBoard;
@@ -108,8 +110,7 @@ public class GameBoardController {
             //set text (number of adjacent basins)
             int buttonDisplay = board.boardAt(row, col);
             if(buttonDisplay == -1) {
-            		//TODO add picture
-            		//TODO use class GameOverScreen?
+            		button.setIcon(new ImageIcon("/res/square.png"));  
             		JOptionPane.showMessageDialog(null, "Basin Hit!", "Lion Inc.", JOptionPane.ERROR_MESSAGE);
             		reset();
             }
