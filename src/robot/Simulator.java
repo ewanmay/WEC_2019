@@ -12,16 +12,35 @@ import javax.swing.JButton;
 
 import view.GameBoardView;
 
+/*
+ * Simulates running the program automatically.
+ */
 public class Simulator {
 
-	Robot robot;
+	/**
+	 * Robot object that can click buttons automatically
+	 */
+	private Robot robot;
 	
-	GameBoardView gui;
+	/**
+	 * The GUI to control
+	 */
+	private GameBoardView gui;
 	
-	JButton [][] buttonComponents;
+	/**
+	 * The buttons to control
+	 */
+	private JButton [][] buttonComponents;
 	
-	JButton resetButton;
+	/**
+	 * the reset button to control
+	 */
+	private JButton resetButton;
 	
+	/**
+	 * Ctor to init the Robot, gien theGUI to control
+	 * @param theGui
+	 */
 	public Simulator(GameBoardView theGui) {
 		try {
 			robot = new Robot();
@@ -31,15 +50,18 @@ public class Simulator {
 		gui = theGui;
 		
 		while (!gui.isShowing()) {
+			//wait for GUI to load
 		}
 		
 		Component components1 [] = gui.getResetButtonPanel().getComponents();
 		resetButton = (JButton)components1[0];
 		
 		repopulateButtons();
-		
 	}
 	
+	/**
+	 * update the local state of the buttons, called after every click
+	 */
 	private void repopulateButtons() {
 		Component components2 [] = gui.getGamePanel().getComponents();
 		
@@ -74,6 +96,9 @@ public class Simulator {
 		robot.delay(1500);
 	}
 	
+	/**
+	 * select a random button and click it
+	 */
 	public void pressRandomButton() {
 		Random r = new Random();
 		int xPos =  r.nextInt((buttonComponents.length - 1 - 0) + 1) + 0;
@@ -83,6 +108,11 @@ public class Simulator {
 		repopulateButtons();
 	}
 	
+	/**
+	 * Press a button, given its coordiantes in the 2D array
+	 * @param xPos
+	 * @param yPos
+	 */
 	public void pressButton(int xPos, int yPos) {
 		mouseMoveAndClick(buttonComponents[xPos][yPos]);
 		repopulateButtons();
