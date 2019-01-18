@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -107,6 +106,7 @@ public class GameBoardController {
 			}
 			setButtonAppearance(buttonClicked, row, col);
 			board.incrementClearedSpaces();
+			gui.incrementClearedSpaces();
 			if(board.checkWin()){
 				//game over, all spaces cleared
 				System.out.println("All Cleared");
@@ -140,6 +140,8 @@ public class GameBoardController {
 			else if(buttonDisplay == 0) {
 				//empty space with no adjacent basins
 				button.setText("");
+				button.setOpaque(true);
+				button.setBackground(Color.DARK_GRAY); // TODO Not wokring on MAC?
 			}
 			else {
 				setButtonColor(button, buttonDisplay);

@@ -27,7 +27,10 @@ public class GameBoardView extends JFrame{
 	 * sideLength of gameBoard. Number of Buttons = sideLength^2
 	 */
 	private int sideLength;
-
+	/**
+	 * the number of cleared spaces on the grid
+	 */
+	private int clearedSpaces = 0;
 	/**
 	 * reset button
 	 */
@@ -59,6 +62,11 @@ public class GameBoardView extends JFrame{
 //		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
 		pack();
+		if(sideLength>=20) {
+			//auto maximize if game is MEDIUM or LARGE
+			setExtendedState(JFrame.MAXIMIZED_BOTH);
+		}
+
 		setLocationRelativeTo(null); // show in center of screen
 		setVisible(true);
 
@@ -88,15 +96,10 @@ public class GameBoardView extends JFrame{
 	 */
 	public void makeGamePanel(){
 		gamePanel.setLayout(new GridLayout(sideLength,sideLength));
-		//TODO best way to set size such that it is resizable? shows well on Mac/Windows?
-		if(sideLength == 30 || sideLength == 20) {
-			gamePanel.setMaximumSize(new Dimension(sideLength*44,sideLength*30));
-			gamePanel.setMinimumSize(new Dimension(sideLength*10,sideLength*10));
-		}
-		else {
-
-			gamePanel.setMinimumSize(new Dimension(sideLength*20,sideLength*20));
-		}
+//		gamePanel.setMaximumSize(new Dimension(sideLength*44,sideLength*30));
+		gamePanel.setMinimumSize(new Dimension(sideLength*10,sideLength*10));
+		
+		
 		initializeButtons();
 		gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
 		add(gamePanel);
@@ -112,17 +115,33 @@ public class GameBoardView extends JFrame{
 				JButton b = new JButton();
 				b.setText("");
 				b.setName(""+ i + ", "+ j); //for IDing upon click
-				b.setPreferredSize(new Dimension(80,80));
+				b.setPreferredSize(new Dimension(80,80)); // 80,80
 				b.setFocusPainted(false); // don't highlight selected buttons
 				b.setFont(new Font("Arial", Font.PLAIN, 11));
-			//	b.setMargin(new Insets(0, 0, 0, 0));
-
 				buttons[i][j] = b;
 				gamePanel.add(b);
 			}
 		}      
 	}
 
+	/**
+	 * increment clearedSpaces by 1
+	 */
+	public void incrementClearedSpaces() {
+		clearedSpaces++;
+	}
+	
+	/**
+	 * check if user has won
+	 */
+	public Boolean gameFinished() {
+		if(clearedSpaces == sideLength*sideLength - sideLength)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
 
 	/**
 	 * sets the button text for the JButton located at [row][col]
