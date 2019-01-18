@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.GameBoard;
+import robot.SimulatorController;
 import view.GameBoardView;
 
 /**
@@ -57,6 +58,10 @@ public class GameBoardController {
 	 */
 	public void reset(){
 		gui.dispose(); // close the old game gui
+		
+		SelectSimulator selectSimulator = new SelectSimulator();
+		boolean simulation = selectSimulator.selectSimulateMode();
+		
 		StartScreen gameStarter = new StartScreen();
 		sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {
@@ -66,6 +71,10 @@ public class GameBoardController {
 		board = new GameBoard(sideLength);
 		gui = new GameBoardView(sideLength);
 		startGame();
+		if(simulation) {
+			SimulatorController robot = new SimulatorController (gui);
+			robot.controlGame();
+		}
 	}
 
 
