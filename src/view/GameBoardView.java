@@ -197,6 +197,10 @@ public class GameBoardView extends JFrame{
 		return resetButtonPanel;
 	}
 	
+	/**
+	 * sets the variable that lets users know if they have lost the game
+	 * @param b is the new gameLost variable
+	 */
 	public void setGameLost(Boolean b)
 	{
 		gameLost = b;
