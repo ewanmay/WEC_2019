@@ -90,13 +90,14 @@ public class Simulator {
 		int xLoc, yLoc;
 		do {
 		robot.mouseMove( location.x + 20, location.y + 20 );
-		robot.delay(100);
+		robot.delay(10);
 		xLoc = MouseInfo.getPointerInfo().getLocation().x;
 		yLoc = MouseInfo.getPointerInfo().getLocation().y;
 		}while( Math.abs(location.x - xLoc + 20) > 10
 				|| Math.abs(location.y - yLoc + 20) > 10);
 		robot.mousePress(InputEvent.BUTTON1_MASK);
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);
+		robot.delay(10);
 
 	}
 	
