@@ -9,17 +9,30 @@ import view.GameBoardView;
 
 public class SimulatorController {
 	
-	GameBoardView gui;
 	JButton[][] components;
-	ArrayList<Coordinate> readyClicks;
+	ArrayList<JButton> readyClicks;
 	Simulator robot;
 	
-	SimulatorController(GameBoardView gui)
+		
+	public SimulatorController(GameBoardView gui)
 	{
-		this.gui = gui;
-		readyClicks = new ArrayList<Coordinate>();
+		readyClicks = new ArrayList<JButton>();
 		robot = new Simulator(gui);
 		components = robot.getButtonComponents();
+	}
+	
+	public void controlGame() {
+		robot.pressRandomButton();
+		while(true) {
+			if(!nextClick()) {
+				nextSpots();
+				if(!nextClick())
+					robot.pressRandomButton();
+			}
+			
+	
+		}
+		
 	}
 	
 	public void refreshBoard()
@@ -32,14 +45,14 @@ public class SimulatorController {
 		
 		for(int i = 0; i < components.length; i++)
 		{
-			for(int j = 0; j < components[i].length; i++)
+			for(int j = 0; j < components[i].length; j++)
 			{
 				JButton temp = components[i][j];
-				if(temp.getText().equals(""))
+				if(temp.getText().equals("") && temp.getIcon() == null && !components[i][j].isEnabled())
 				{
-					for(int k = i-1; k < i+2; k+=2)
+					for(int k = i-1; k < i+2; k++)
 					{
-						for(int h = j-1; h < j+2; h+=2)
+						for(int h = j-1; h < j+2; h++)
 						{
 							checkSurroundingBlocks(k, h);
 						}
@@ -51,20 +64,19 @@ public class SimulatorController {
 	
 	public void checkSurroundingBlocks(int k, int h)
 	{
-		if((components[k][h]).isEnabled())
+		if(k >= 0 && k < components.length && h >= 0 && h < components.length && components[k][h].isEnabled())
 		{
-			if((k >= 0) && k < components.length && h >= 0 && h < components.length)
-			{
-				readyClicks.add(new Coordinate(k, h));
-			}
+			readyClicks.add(components[k][h]);
 		}
 	}
 	
-	public Coordinate nextClick() {
-		if(readyClicks.size() > 0)
-			return readyClicks.remove(0);
+	public boolean nextClick() {
+		if(readyClicks.size() > 0) {
+			robot.mouseMoveAndClick(readyClicks.remove(0));
+			return true;
+		}
 		else
-			return null;
+			return false;
 	}
 
 }

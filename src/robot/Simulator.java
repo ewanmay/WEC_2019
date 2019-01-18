@@ -91,7 +91,7 @@ public class Simulator {
 				&& MouseInfo.getPointerInfo().getLocation().y != location.y + 20);
 		robot.mousePress(InputEvent.BUTTON1_MASK);
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);
-		robot.delay(1500);
+		robot.delay(500);
 	}
 	
 	/**
