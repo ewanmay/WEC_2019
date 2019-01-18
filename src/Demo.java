@@ -24,6 +24,7 @@ public class Demo {
 			GameBoardController controller = new GameBoardController(view, model, sideLength);
 			
 			if(simulation) {
+				System.out.println("Simulation Mode.");
 				SimulatorController robot = new SimulatorController (view);
 				robot.controlGame();
 			}

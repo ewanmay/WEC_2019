@@ -42,6 +42,8 @@ public class Simulator {
 	public Simulator(GameBoardView theGui) {
 		try {
 			robot = new Robot();
+//			robot.setAutoDelay(40); // needed for mac?
+//		    robot.setAutoWaitForIdle(true); // needed for mac?
 		} catch (AWTException e) {
 			e.printStackTrace();
 		}

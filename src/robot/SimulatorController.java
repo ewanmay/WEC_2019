@@ -1,10 +1,7 @@
 package robot;
 
-import java.awt.Component;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
-
 import view.GameBoardView;
 
 public class SimulatorController {
