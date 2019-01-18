@@ -52,6 +52,11 @@ public class Simulator {
 		}
 	}
 	
+	public JButton[][] getButtonComponents()
+	{
+		return buttonComponents;
+	}
+	
 	/**
 	 * This function was made using the following source.
 	 * https://www.developer.com/java/other/article.php/2241561/An-Automated-Test-Program-using-the-Java-Robot-Class.htm
