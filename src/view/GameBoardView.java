@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -33,7 +34,7 @@ public class GameBoardView extends JFrame{
     	buttons = new JButton[sideLength][sideLength];
     this.sideLength = sideLength;
     	
-    	setTitle("WEC 2019"); //TODO change title
+    	setTitle("Lion Inc."); //TODO change title?
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     makeGamePanel();
@@ -71,12 +72,31 @@ public class GameBoardView extends JFrame{
         }      
     }
     
+    /**
+     * sets the button text for the JButton located at [row][col]
+     * @param row the row
+     * @param col the col
+     * @param text the button text
+     */
+    public void setButtonText(int row, int col, String text) {
+    		buttons[row][col].setText(text);
+    }
+    
+    /**
+     * adds action listener for the specified JButton located at [row][col]
+     * @param row the row
+     * @param col the col
+     * @param text the button text
+     */
+    public void setButtonListener(int row, int col, ActionListener e) {
+		buttons[row][col].addActionListener(e);
+    }
     
         
     //TODO main for testing. remove or comment out later
-    public static void main(String[] args) {
-		GameBoardView g = new GameBoardView(20);
-	}
+    //    public static void main(String[] args) {
+    //		GameBoardView g = new GameBoardView(20);
+    //	}
     
     
 }
