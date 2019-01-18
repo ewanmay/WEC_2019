@@ -1,4 +1,5 @@
 import controller.GameBoardController;
+import controller.StartScreen;
 import model.GameBoard;
 import view.GameBoardView;
 
@@ -7,7 +8,6 @@ public class Demo {
 	public static void main(String[] args) {
 		
 		StartScreen gameStarter = new StartScreen();
-
 		int sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {
 			System.out.println("Error selecting board size.");
