@@ -57,10 +57,10 @@ public class SimulatorController {
 						}
 					}
 				}
-//				if(temp.getText().equals("1") && temp.getIcon() == null && !components[i][j].isEnabled() && readyClicks.size() > 0)
-//				{
-//					checkBlocksAroundOne(i, j);
-//				}
+				if(temp.getText().equals("1") && temp.getIcon() == null && !components[i][j].isEnabled() && readyClicks.size() > 0)
+				{
+					checkBlocksAroundOne(i, j);
+				}
 			}
 		}
 	}
@@ -91,7 +91,7 @@ public class SimulatorController {
 						if(components[k][h].isEnabled())
 						{
 							basinBlocks.add(new Coordinate(k,h));
-							fixSurroundingBlocks(k, h);
+							//fixSurroundingBlocks(k, h);
 						}
 					}
 				}
