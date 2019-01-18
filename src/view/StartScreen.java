@@ -4,9 +4,10 @@ import javax.swing.JOptionPane;
 
 public class StartScreen {
 	
-	StartScreen(){}
+	public StartScreen(){
+	}
 	
-	public int SelectBoardSize() {
+	public int selectBoardSize() {
 		String[] inputButtons = {"Small", "Medium", "Large"};
 		
 		int result = JOptionPane.showOptionDialog(null, "Select Size of Board", "Select size of board", 
@@ -29,4 +30,5 @@ public class StartScreen {
 			return -1;
 		}
 	}
+	
 }
