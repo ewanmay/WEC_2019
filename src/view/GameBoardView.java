@@ -92,6 +92,13 @@ public class GameBoardView extends JFrame{
 		buttons[row][col].addActionListener(e);
     }
     
+    /**
+     * @return the 2D array of JButtons
+     */
+    public JButton[][] getButtons() {
+    		return buttons;
+    }
+    
         
     //TODO main for testing. remove or comment out later
     //    public static void main(String[] args) {
