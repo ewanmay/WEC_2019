@@ -2,13 +2,13 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.GameBoard;
 import view.GameBoardView;
-
 /**
  * Controller class that sets all button listeners
  */
@@ -119,8 +119,43 @@ public class GameBoardController {
             		button.setText("");
             }
             else {
-            		//show num of adjacent basins
-            		//TODO color of text display
+            	switch(buttonDisplay) {
+            	case 1:
+            		button.setForeground(Color.BLUE);
+            		break;
+            	case 2:
+            		button.setForeground(Color.GREEN);
+            		break;
+            		
+            	case 3:
+            		button.setForeground(Color.RED);
+            		break;
+            		
+            	case 4:
+            		button.setForeground(Color.MAGENTA);
+            		break;
+            		
+            	case 5:
+            		button.setForeground(Color.ORANGE);
+            		break;
+            		
+            	case 6:
+            		button.setForeground(Color.CYAN);
+            		break;
+            		
+            	case 7:
+            		button.setForeground(Color.BLACK);
+            		break;
+            		
+            	case 8:
+            		button.setForeground(Color.GRAY);
+            		break;
+            		
+            	default: 
+            		button.setForeground(Color.BLACK);
+            		break;
+
+            	}
         			button.setText(""+buttonDisplay);
             }
             board.incrementClearedSpaces();
