@@ -22,7 +22,7 @@ public class GameBoard {
 	/**
 	 * the number of cleared spaces on the grid
 	 */
-	private int clearedSpaces;
+	private int clearedSpaces = 0;
 	/**
 	 * the number of nonBasin (safe) spaces
 	 */
@@ -107,12 +107,13 @@ public class GameBoard {
 		clearedSpaces++;
 	}
 	
+	
 	/**
 	 * @return true if all the spaces have been cleared (only basins remain)
 	 */
 	public boolean checkWin() {
 		System.out.println("Cleared Spaces: "+clearedSpaces);
-		return (clearedSpaces > nonBasinSpaces);
+		return (clearedSpaces >= nonBasinSpaces);
 	}
 	
 	/**
