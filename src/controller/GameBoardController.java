@@ -2,9 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-
 import model.GameBoard;
 import view.GameBoardView;
 
@@ -30,8 +28,7 @@ public class GameBoardController {
 	 * set the button listener for each button in the grid
 	 */
 	private void setAllButtonListeners() {
-		 for(int i = 0; i < sideLength; i++)
-	        {
+		 for(int i = 0; i < sideLength; i++){
 	            for(int j = 0 ; j < sideLength ; j++){
 	                gui.setButtonListener(i, j, new ButtonListener());
 	            }
@@ -47,7 +44,7 @@ public class GameBoardController {
          */
         @Override
         public void actionPerformed(ActionEvent e) {
-            int row=-1, col=-1;
+            int row = -1, col = -1;
             //find which button was clicked
             JButton buttonClicked = (JButton)e.getSource();
             JButton [][] buttons = gui.getButtons();

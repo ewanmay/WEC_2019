@@ -1,7 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Random;
 
 
@@ -81,10 +80,10 @@ public class GameBoard {
 		}
 	}
 	
-	public static void main(String [] args) {
-		GameBoard test = new GameBoard(20);
-		test.printBoard();
-	}
+//	public static void main(String [] args) {
+//		GameBoard test = new GameBoard(20);
+//		test.printBoard();
+//	}
 	
 	
 	
