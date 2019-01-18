@@ -3,11 +3,15 @@ package controller;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 import model.GameBoard;
 import view.GameBoardView;
 
@@ -87,6 +91,7 @@ public class GameBoardController {
 	 * Inner listener class for the game buttons
 	 */
 	class ButtonListener implements ActionListener{
+
 		/**
 		 * set the action performed upon button click
 		 */
@@ -104,16 +109,38 @@ public class GameBoardController {
 				System.err.println("ERROR parsing button name to get row/col.. Terminating..");
 				System.exit(1);
 			}
-			setButtonAppearance(buttonClicked, row, col);
-			board.incrementClearedSpaces();
-			gui.incrementClearedSpaces();
-			if(board.checkWin()){
-				//game over, all spaces cleared
-				System.out.println("All Cleared");
-				JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
-				reset();
-				return;
+
+			if ((e.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
+				//CTRL CLICK - place flag
+				if(buttonClicked.getIcon() == null) {
+					ImageIcon imageIcon = new ImageIcon("res" + "/" + "flag.png");
+					Image image = imageIcon.getImage();
+					Image newImage = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+					imageIcon = new ImageIcon(newImage);
+					buttonClicked.setIcon(imageIcon);  
+				}
+				else {
+					buttonClicked.setIcon(null);
+				}
+				gui.repaint();
+			} 
+			else {
+				//NORMAL LEFT CLICK
+				if(buttonClicked.getIcon() == null) { //ensure space is not flagged
+					setButtonAppearance(buttonClicked, row, col);
+					board.incrementClearedSpaces();
+					gui.incrementClearedSpaces();
+					if(board.checkWin()){
+						//game over, all spaces cleared
+						System.out.println("All Cleared");
+						JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
+						reset();
+						return;
+					}
+				}
 			}
+
+
 		}
 
 		/**
@@ -161,8 +188,8 @@ public class GameBoardController {
 		 */
 		private void setButtonColor(JButton button, int buttonDisplay) {
 			System.out.println("set button color: "+buttonDisplay);
-		    button.setOpaque(true);
-		    
+			button.setOpaque(true);
+
 			switch(buttonDisplay) {
 			case 1:
 				button.setBackground(Color.CYAN);
@@ -192,6 +219,7 @@ public class GameBoardController {
 				break;
 			}
 		}
+
 	}//end of inner class ButtonListener
 
 }

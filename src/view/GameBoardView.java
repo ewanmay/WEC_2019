@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -59,17 +61,13 @@ public class GameBoardView extends JFrame{
 
 		makeResetButtonPanel();
 		makeGamePanel();
-//		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
-
 		pack();
 		if(sideLength>=20) {
 			//auto maximize if game is MEDIUM or LARGE
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 		}
-
 		setLocationRelativeTo(null); // show in center of screen
 		setVisible(true);
-
 	}
 
 	/**
@@ -162,6 +160,7 @@ public class GameBoardView extends JFrame{
 	 */
 	public void setGridButtonListener(int row, int col, ActionListener e) {
 		buttons[row][col].addActionListener(e);
+//		buttons[row][col].addMouseListener(e);
 	}
 
 	/**
