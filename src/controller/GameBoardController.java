@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -135,46 +137,45 @@ public class GameBoardController {
             		button.setText("");
             }
             else {
+            	System.out.println(buttonDisplay);
+
+    			button.setOpaque(true);
             	switch(buttonDisplay) {
             	case 1:
-            		button.setForeground(Color.BLUE);
+            		button.setBackground(Color.BLUE);
             		break;
             	case 2:
-            		button.setForeground(Color.GREEN);
+            		button.setBackground(Color.GREEN);
             		break;
             		
             	case 3:
-            		button.setForeground(Color.RED);
+            		button.setBackground(Color.RED);
             		break;
             		
             	case 4:
-            		button.setForeground(Color.MAGENTA);
+            		button.setBackground(Color.MAGENTA);
             		break;
             		
             	case 5:
-            		button.setForeground(Color.ORANGE);
+            		button.setBackground(Color.ORANGE);
             		break;
             		
             	case 6:
-            		button.setForeground(Color.CYAN);
+            		button.setBackground(Color.CYAN);
             		break;
             		
             	case 7:
-            		button.setForeground(Color.BLACK);
+            		button.setBackground(Color.YELLOW);
             		break;
             		
             	case 8:
-            		button.setForeground(Color.GRAY);
+            		button.setBackground(Color.GRAY);
             		break;
-            		
-            	default: 
-            		button.setForeground(Color.BLACK);
-            		break;
-
             	}
-        			button.setText(""+buttonDisplay);
-        			button.repaint();
+
+            	button.setText(""+buttonDisplay);
             }
+            
             board.incrementClearedSpaces();
             button.setEnabled(false); //disable button
             if(board.checkWin()){
