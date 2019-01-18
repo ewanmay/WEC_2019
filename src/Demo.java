@@ -12,7 +12,6 @@ public class Demo {
 		SelectSimulator selectSimulator = new SelectSimulator();
 		boolean simulation = selectSimulator.selectSimulateMode();
 
-
 		StartScreen gameStarter = new StartScreen();
 		int sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {

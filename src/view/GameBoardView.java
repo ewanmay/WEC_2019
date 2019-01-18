@@ -89,7 +89,14 @@ public class GameBoardView extends JFrame{
 	public void makeGamePanel(){
 		gamePanel.setLayout(new GridLayout(sideLength,sideLength));
 		//TODO best way to set size such that it is resizable? shows well on Mac/Windows?
-		gamePanel.setMinimumSize(new Dimension(700,700));
+		if(sideLength == 30 || sideLength == 20) {
+			gamePanel.setMaximumSize(new Dimension(sideLength*44,sideLength*30));
+			gamePanel.setMinimumSize(new Dimension(sideLength*10,sideLength*10));
+		}
+		else {
+
+			gamePanel.setMinimumSize(new Dimension(sideLength*20,sideLength*20));
+		}
 		initializeButtons();
 		gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
 		add(gamePanel);
