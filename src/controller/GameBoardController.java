@@ -1,8 +1,12 @@
 package controller;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.image.BufferedImage;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -36,6 +40,7 @@ public class GameBoardController {
 		board = boardModel;
 		gui = gameView;
 		this.sideLength = sideLength;
+		startGame();
 	}
 	
 	/**
@@ -56,18 +61,17 @@ public class GameBoardController {
 	 * reset the game
 	 */
 	public void reset(){
+		gui.dispose(); // close the old game gui
 		StartScreen gameStarter = new StartScreen();
 		sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {
 			System.err.println("Error selecting board size.");
 			System.exit(1);
 		}
-		else {
-			 board = new GameBoard(sideLength);
-			 gui = new GameBoardView(sideLength);
-		}
+		board = new GameBoard(sideLength);
+		gui = new GameBoardView(sideLength);
+		startGame();
 	}
-	
 	
 	
 	/**
@@ -93,7 +97,6 @@ public class GameBoardController {
             int row = -1, col = -1;
             //find which button was clicked
             JButton buttonClicked = (JButton)e.getSource();
-            JButton [][] buttons = gui.getGridButtons();
             String[] buttonName = buttonClicked.getName().split(", ");
             try {
 	            row = Integer.parseInt(buttonName[0]);
@@ -105,24 +108,82 @@ public class GameBoardController {
             setButtonAppearance(buttonClicked, row, col);
         }
         
+        /**
+         * Change the button text/icon based on number of adjacent basins
+         * @param button the button to change
+         * @param row the x coord
+         * @param col the y coord
+         */
         private void setButtonAppearance(JButton button, int row, int col) {
             //set text (number of adjacent basins)
             int buttonDisplay = board.boardAt(row, col);
             if(buttonDisplay == -1) {
-            		button.setIcon(new ImageIcon("/res/square.png"));  
+            		ImageIcon imageIcon = new ImageIcon("res" + "\\" + "square.png");
+            		Image image = imageIcon.getImage();
+            		Image newImage = image.getScaledInstance(25, 25,  java.awt.Image.SCALE_SMOOTH);
+            		imageIcon = new ImageIcon(newImage);
+            		button.setIcon(imageIcon);  
+            	
+            		gui.repaint();
+            		
             		JOptionPane.showMessageDialog(null, "Basin Hit!", "Lion Inc.", JOptionPane.ERROR_MESSAGE);
             		reset();
+            		return;
             }
             else if(buttonDisplay == 0) {
             		//empty space with no adjacent basins
             		button.setText("");
             }
             else {
-            		//show num of adjacent basins
+            	switch(buttonDisplay) {
+            	case 1:
+            		button.setForeground(Color.BLUE);
+            		break;
+            	case 2:
+            		button.setForeground(Color.GREEN);
+            		break;
+            		
+            	case 3:
+            		button.setForeground(Color.RED);
+            		break;
+            		
+            	case 4:
+            		button.setForeground(Color.MAGENTA);
+            		break;
+            		
+            	case 5:
+            		button.setForeground(Color.ORANGE);
+            		break;
+            		
+            	case 6:
+            		button.setForeground(Color.CYAN);
+            		break;
+            		
+            	case 7:
+            		button.setForeground(Color.BLACK);
+            		break;
+            		
+            	case 8:
+            		button.setForeground(Color.GRAY);
+            		break;
+            		
+            	default: 
+            		button.setForeground(Color.BLACK);
+            		break;
+
+            	}
         			button.setText(""+buttonDisplay);
+        			button.repaint();
             }
-            //disable button
-            button.setEnabled(false);
+            board.incrementClearedSpaces();
+            button.setEnabled(false); //disable button
+            if(board.checkWin()){
+            		//game over, all spaces cleared
+            		System.out.println("All Cleared");
+	            	JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
+	        		reset();
+	        		return;
+            }
         }
     }
 	

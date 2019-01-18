@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * the view class showing the GUI. extends JFrame
+ * 
+ */
 @SuppressWarnings("serial")
 public class GameBoardView extends JFrame{
 	
@@ -52,6 +56,7 @@ public class GameBoardView extends JFrame{
 	    makeGamePanel();
 	
 	    pack();
+	    setLocationRelativeTo(null); // show in center of screen
 	    setVisible(true);
 	    	
     }
@@ -65,6 +70,9 @@ public class GameBoardView extends JFrame{
 		add(resetButtonPanel);
 	}
     
+    /**
+     * init the reset button
+     */
     private void makeResetButton(){
 		resetButton = new JButton("Reset");
         resetButton.setFocusPainted(false); // don't highlight as selected
@@ -113,8 +121,8 @@ public class GameBoardView extends JFrame{
     /**
      * adds action listener for the specified JButton located at [row][col]
      * @param row the row
-     * @param col the col
-     * @param text the button text
+     * @param col the Column
+     * @param text the button text to display
      * @param e the ActionListener
      */
     public void setGridButtonListener(int row, int col, ActionListener e) {
