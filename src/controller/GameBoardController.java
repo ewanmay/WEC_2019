@@ -123,8 +123,8 @@ public class GameBoardController {
             		//TODO color of text display
         			button.setText(""+buttonDisplay);
             }
-            //disable button
-            button.setEnabled(false);
+            board.incrementClearedSpaces();
+            button.setEnabled(false); //disable button
             if(board.checkWin()){
             		//game over, all spaces cleared
             		System.out.println("All Cleared");
