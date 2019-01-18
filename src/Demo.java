@@ -7,11 +7,12 @@ public class Demo {
 	public static void main(String[] args) {
 		
 		StartScreen gameStarter = new StartScreen();
+		int boardLength = gameStarter.SelectBoardSize();
 
-		GameBoard model = new GameBoard();
-		GameBoardView view = new GameBoardView(gameStarter.SelectBoardSize());
+		GameBoard model = new GameBoard(boardLength);
+		GameBoardView view = new GameBoardView(boardLength);
 		
-		GameBoardController controller = new GameBoardController(view);
+		GameBoardController controller = new GameBoardController(view, model);
 		
 		
 
