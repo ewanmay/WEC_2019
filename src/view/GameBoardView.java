@@ -107,8 +107,7 @@ public class GameBoardView extends JFrame{
 				b.setName(""+ i + ", "+ j); //for IDing upon click
 				b.setPreferredSize(new Dimension(80,80));
 				b.setFocusPainted(false); // don't highlight selected buttons
-//				b.setFont(new Font("Arial", Font.PLAIN, 8));
-				b.setMargin(new Insets(0, 0, 0, 0));
+				b.setFont(new Font("Arial", Font.PLAIN, 11));
 				buttons[i][j] = b;
 				gamePanel.add(b);
 			}
