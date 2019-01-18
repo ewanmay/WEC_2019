@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JOptionPane;
 
 import model.GameBoard;
 import robot.SimulatorController;
@@ -15,16 +18,21 @@ public class GameBoardController {
 	/**
 	 * The view
 	 */
-	public GameBoardView gui;
+	private GameBoardView gui;
 	/**
 	 * The board (model)
 	 */
-	public GameBoard board;
+	private GameBoard board;
 	/**
 	 * The side length of the board, number of basins == sideLength^2
 	 */
-	public int sideLength;
-
+	private int sideLength;
+	
+	/**
+	 * 
+	 */
+	private boolean isSim;
+	
 	
 	/**
 	 * Constructor to set the view, model, and sideLength, and sets button listeners
@@ -32,10 +40,11 @@ public class GameBoardController {
 	 * @param boardModel
 	 * @param sideLength
 	 */
-	public GameBoardController(GameBoardView gameView, GameBoard boardModel, int sideLength) {
+	public GameBoardController(GameBoardView gameView, GameBoard boardModel, int sideLength, boolean sim) {
 		board = boardModel;
 		gui = gameView;
 		this.sideLength = sideLength;
+		isSim = sim;
 		startGame();
 	}
 
@@ -57,10 +66,10 @@ public class GameBoardController {
 	 * reset the game
 	 */
 	public void reset(){
+		if(isSim) {
+			System.exit(1);
+		}
 		gui.dispose(); // close the old game gui
-		
-		SelectSimulator selectSimulator = new SelectSimulator();
-		boolean simulation = selectSimulator.selectSimulateMode();
 		
 		StartScreen gameStarter = new StartScreen();
 		sideLength = gameStarter.selectBoardSize();
@@ -71,10 +80,6 @@ public class GameBoardController {
 		board = new GameBoard(sideLength);
 		gui = new GameBoardView(sideLength);
 		startGame();
-		if(simulation) {
-			SimulatorController robot = new SimulatorController (gui);
-			robot.controlGame();
-		}
 	}
 
 
