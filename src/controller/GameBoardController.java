@@ -34,6 +34,7 @@ public class GameBoardController {
 		board = boardModel;
 		gui = gameView;
 		this.sideLength = sideLength;
+		startGame();
 	}
 	
 	/**
@@ -54,16 +55,16 @@ public class GameBoardController {
 	 * reset the game
 	 */
 	public void reset(){
+		gui.dispose(); // close the old game gui
 		StartScreen gameStarter = new StartScreen();
 		sideLength = gameStarter.selectBoardSize();
 		if(sideLength == -1) {
 			System.err.println("Error selecting board size.");
 			System.exit(1);
 		}
-		else {
-			 board = new GameBoard(sideLength);
-			 gui = new GameBoardView(sideLength);
-		}
+		board = new GameBoard(sideLength);
+		gui = new GameBoardView(sideLength);
+		startGame();
 	}
 	
 	
@@ -108,6 +109,7 @@ public class GameBoardController {
             int buttonDisplay = board.boardAt(row, col);
             if(buttonDisplay == -1) {
             		//TODO add picture
+            		//TODO use class GameOverScreen?
             		JOptionPane.showMessageDialog(null, "Basin Hit!", "Lion Inc.", JOptionPane.ERROR_MESSAGE);
             		reset();
             }
@@ -121,6 +123,11 @@ public class GameBoardController {
             }
             //disable button
             button.setEnabled(false);
+            if(board.checkWin()){
+            		//game over, all spaces cleared
+	            	JOptionPane.showMessageDialog(null, "All Spaces Cleared!", "Lion Inc.", JOptionPane.PLAIN_MESSAGE);
+	        		reset();
+            }
         }
     }
 	

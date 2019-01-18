@@ -20,6 +20,11 @@ public class GameBoard {
 	private int board[][];
 	
 	/**
+	 * the number of cleared spaces on the grid
+	 */
+	private int clearedSpaces;
+	
+	/**
 	 * Constructs the game board.
 	 */
 	public GameBoard(int length) {
@@ -89,17 +94,25 @@ public class GameBoard {
 	}
 	
 	/**
-	 * Method that prints the board to the console.
+	 * @return true if all the spaces have been cleared (only basins remain)
 	 */
-	public void printBoard() {
-		for(int y = 0; y < sideLength; y++ ) {
-			for(int x = 0; x < sideLength; x++ ) {
-				System.out.print(board[x][y] + " ");
-			}
-			System.out.println("");
-		}
+	public boolean checkWin() {
+		int nonBasinSpaces =  sideLength*sideLength - sideLength;
+		return (clearedSpaces >= nonBasinSpaces);
 	}
 	
+	/**
+	 * For Testing. Prints the board to the console.
+	 */
+//	public void printBoard() {
+//		for(int y = 0; y < sideLength; y++ ) {
+//			for(int x = 0; x < sideLength; x++ ) {
+//				System.out.print(board[x][y] + " ");
+//			}
+//			System.out.println("");
+//		}
+//	}
+//	
 
 	/**
 	 * Main method to test class.

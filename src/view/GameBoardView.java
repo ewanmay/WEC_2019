@@ -52,6 +52,7 @@ public class GameBoardView extends JFrame{
 	    makeGamePanel();
 	
 	    pack();
+	    setLocationRelativeTo(null); // show in center of screen
 	    setVisible(true);
 	    	
     }
