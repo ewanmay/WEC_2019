@@ -168,7 +168,8 @@ public class GameBoardController {
             	}
 				button.setText(""+buttonDisplay);
 				int buttonHeight = button.getSize().height;
-				button.setFont(new Font("Arial", Font.PLAIN, buttonHeight - 15));
+				System.out.println(buttonHeight);
+				button.setFont(new Font("Arial", Font.PLAIN, Math.floorDiv(buttonHeight, 2)));
 				button.repaint();
 			}
 			board.incrementClearedSpaces();
