@@ -135,6 +135,21 @@ public class GameBoardView extends JFrame{
     public JButton[][] getGridButtons() {
     		return buttons;
     }
+
+	/**
+	 * @return the gamePanel
+	 */
+	public JPanel getGamePanel() {
+		return gamePanel;
+	}
+
+	/**
+	 * @return the resetButtonPanel
+	 */
+	public JPanel getResetButtonPanel() {
+		return resetButtonPanel;
+	}
+    
     
     
 }
