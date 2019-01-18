@@ -32,6 +32,10 @@ public class GameBoardView extends JFrame{
 	 */
 	private int clearedSpaces = 0;
 	/**
+	 * variable to know a mine has been hit
+	 */
+	private Boolean gameLost = false;
+	/**
 	 * reset button
 	 */
 	private JButton resetButton;
@@ -188,6 +192,14 @@ public class GameBoardView extends JFrame{
 	public JPanel getResetButtonPanel(){
 		return resetButtonPanel;
 	}
+	
+	/**
+	 * @return the gameLost
+	 */
+	public Boolean getGameLost() {
+		return gameLost;
+	}
+	
     
     
 }
