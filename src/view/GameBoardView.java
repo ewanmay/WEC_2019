@@ -3,7 +3,6 @@ package view;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -28,11 +27,12 @@ public class GameBoardView extends JFrame{
 	 */
 	private int sideLength;
 	/**
-	 * the number of cleared spaces on the grid
+	 * the number of cleared spaces on the grid. 
+	 * needed in the View for the Simulator
 	 */
 	private int clearedSpaces = 0;
 	/**
-	 * variable to know a mine has been hit
+	 * true if a basin has been hit
 	 */
 	private Boolean gameLost = false;
 	/**
@@ -63,17 +63,13 @@ public class GameBoardView extends JFrame{
 
 		makeResetButtonPanel();
 		makeGamePanel();
-//		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
-
 		pack();
 		if(sideLength>=20) {
 			//auto maximize if game is MEDIUM or LARGE
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 		}
-
 		setLocationRelativeTo(null); // show in center of screen
 		setVisible(true);
-
 	}
 
 	/**
