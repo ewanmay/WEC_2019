@@ -158,7 +158,7 @@ public class GameBoardController {
 		    
 			switch(buttonDisplay) {
 			case 1:
-				button.setBackground(Color.BLUE);
+				button.setBackground(Color.CYAN);
 				break;
 			case 2:
 				button.setBackground(Color.GREEN);
@@ -179,7 +179,7 @@ public class GameBoardController {
 				button.setBackground(Color.YELLOW);
 				break;
 			case 8:
-				button.setBackground(Color.GRAY);
+				button.setBackground(Color.PINK);
 				break;
 			default: 
 				break;
